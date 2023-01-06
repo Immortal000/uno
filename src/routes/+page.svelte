@@ -3,9 +3,12 @@
 
 	import { deck, num_players, current_player, top_card } from '../store';
 	import { shuffleDeck } from '../card_functions/shuffle';
+	import { distribute } from '../card_functions/distributeDeck';
+	import Gamecanvas from '../components/gamecanvas.svelte';
 
 	// Local variables
 	let number_players_input = 2;
+	let distributed = false;
 
 	// Change the current player based on the total number of players
 	// NEED TO UPDATE TOP CARD AFTER EVERY TURN
@@ -27,6 +30,14 @@
 <button on:click={nextTurn}>Switch turns</button>
 <button on:click={shuffleDeck($deck)}>Shuffle Deck</button>
 <button on:click={() => console.log($top_card)}>Show Top card</button>
+<button
+	on:click={() => {
+		if (!distributed) {
+			distribute();
+			distributed = true;
+		}
+	}}>Distribute cards</button
+>
 
 <label for="numPlayers">Number of Players: </label>
 <input
@@ -36,3 +47,7 @@
 	on:change={updateNumberPlayers}
 	id="numPlayers"
 />
+
+{#if distributed}
+	<Gamecanvas />
+{/if}
