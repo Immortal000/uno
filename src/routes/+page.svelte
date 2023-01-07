@@ -6,6 +6,7 @@
 	import { distribute } from '../card_functions/distributeDeck';
 	import Gamecanvas from '../components/gamecanvas.svelte';
 	import { nextTurn } from '../card_functions/change_player';
+	import { drawCard } from '../card_functions/drawCard';
 
 	// Local variables
 	let number_players_input = 2;
@@ -40,6 +41,7 @@
 	on:change={updateNumberPlayers}
 	id="numPlayers"
 />
+<button on:click={drawCard}>Draw Card</button>
 
 {#if distributed}
 	<Gamecanvas />
