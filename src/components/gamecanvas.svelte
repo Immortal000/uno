@@ -22,9 +22,13 @@
 	<!-- Top card -->
 	<div class="card">
 		{#if check_card($top_card) == 'number'}
-			<Number number={$top_card['number']} variant={$top_card['variant']} />
+			<Number
+				number={$top_card['number']}
+				variant={$top_card['variant']}
+				type={$top_card['type']}
+			/>
 		{:else}
-			<Power power={$top_card['power']} variant={$top_card['variant']} />
+			<Power power={$top_card['power']} variant={$top_card['variant']} type={$top_card['type']} />
 		{/if}
 	</div>
 
@@ -34,9 +38,9 @@
 	<div class="player_cards">
 		{#each $players_cards[$current_player - 1] as card}
 			{#if check_card(card) == 'number'}
-				<Number number={card['number']} variant={card['variant']} />
+				<Number number={card['number']} variant={card['variant']} type={card['type']} />
 			{:else}
-				<Power power={card['power']} variant={card['variant']} />
+				<Power power={card['power']} variant={card['variant']} type={card['type']} />
 			{/if}
 		{/each}
 	</div>

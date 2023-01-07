@@ -5,20 +5,13 @@
 	import { shuffleDeck } from '../card_functions/shuffle';
 	import { distribute } from '../card_functions/distributeDeck';
 	import Gamecanvas from '../components/gamecanvas.svelte';
+	import { nextTurn } from '../card_functions/change_player';
 
 	// Local variables
 	let number_players_input = 2;
 	let distributed = false;
 
 	// Change the current player based on the total number of players
-	// NEED TO UPDATE TOP CARD AFTER EVERY TURN
-	const nextTurn = () => {
-		if ($current_player < $num_players) {
-			current_player.update((n) => n + 1);
-		} else {
-			current_player.set(1);
-		}
-	};
 
 	// Change the total number of players
 	const updateNumberPlayers = () => {
